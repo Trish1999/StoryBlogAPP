@@ -1,0 +1,46 @@
+.cardcontainer {
+    border: none;
+    box-shadow: lightgray;
+    border-radius: 1rem;
+    display: flex;
+    flex-direction: column;
+    width: 15rem;
+    height: 25rem;
+    overflow:hidden;
+    background-color: black;
+    color: white;
+    text-align: center;
+    margin:1.5rem
+    
+}
+
+img {
+width: 15rem;
+    height:20rem;
+}
+
+
+.heading {
+    font-size: 1.4rem;
+}
+
+.cardlist {
+    display: flex;
+    flex-wrap: wrap;
+}
+.btn{
+    color:white;
+    background-color: rgb(120, 182, 240);
+    border: none;
+    padding: 1rem;
+    font-weight: bolder;
+    cursor: pointer;
+    opacity: 0.7;
+    transition: 0.3s;
+    border-radius: 1rem;
+    margin-left: 50%;
+    
+}
+.btn:hover{
+    opacity: 2;
+}

@@ -1,0 +1,92 @@
+
+.navbar{
+display: flex;
+justify-content: space-between;
+  align-items: center;
+   padding: 1px 2px;
+    width: 100vw;
+    min-height: 10vh;
+    min-width: 100vw;
+    background-color: white;
+    box-shadow: 0px 15px 10px -15px #111;
+    padding-right: 1rem;
+}
+.p{
+    font-weight: bolder;
+    font-size: large;
+    margin-left: 2rem;
+
+}
+
+.btn1,.btn2,.btn3,.btn4{
+    border-radius: 1rem;
+    margin:0.5rem;
+    padding: 0.6rem;
+    width:7rem;
+    color:white;
+    font-weight: bolder;
+    opacity: 0.7;
+    transition: 0.3s;
+    cursor: pointer;
+    border: none;
+
+}
+.btn1,.btn3,.btn4,.btn5{
+background-color: #FF7373;
+}
+.btn2{
+background-color: #73ABFF;
+margin-left:1rem;
+}
+.btn1:hover,.btn2:hover,.btn3:hover,
+.btn4:hover,.btn5:hover{
+    opacity: 2;
+}
+.dp{
+    height:2.5rem;
+    width: 2.5rem;
+}
+.btn{
+    display: flex;
+}
+.option{
+    position:absolute;
+      right: 0;
+      align-items: center;
+       background-color: #f9f9f9; 
+       box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+        z-index: 1;
+}
+
+.btn5{
+    display: block;
+    width:8rem;
+    margin: 1rem;
+     padding: 10px;
+      text-align: center;
+       border: none;
+       color: white;
+       border-radius: 40px;
+        cursor: pointer;
+            opacity: 0.7;
+                transition: 0.3s;
+}
+.mobdropdown {
+    display: none;
+}
+
+@media (min-width: 300px) and (max-width: 780px) {
+    .btn {
+        display: none;
+    }
+    .mobdropdown {
+            display: block;
+        }
+    .option {
+        position: absolute;
+        width:100vw;
+        display:grid;
+        justify-content: center;
+    }
+
+}

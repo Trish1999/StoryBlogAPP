@@ -1,0 +1,43 @@
+.filterbtn{
+                background-size:cover;
+                        background-position: center; 
+                        color: white;
+                        margin:1rem;
+                        font-size: 1.5rem;
+                        text-align: center;
+                        width:15rem;
+                        height: 9rem;
+                        border-radius: 1rem;
+                        border:none;
+                        filter: brightness(70%);
+                        }
+.filterbtn:hover {
+            outline-style: solid;
+            box-shadow: 0 0 0 4px #67d6e7;
+            transition: 0.4s;
+            filter: brightness(100%);
+}
+.filter{
+    display:flex;
+    justify-content: space-evenly;
+}
+.storysection h2{
+    text-align: center;
+}
+
+@media (min-width: 300px) and (max-width: 780px) {
+.filter {
+    display:flex;
+    justify-content:space-evenly;
+
+    }
+        .filterbtn {
+            font-size: 1rem;
+            text-align: center;
+            width: 5rem;
+            height: 5rem;
+            margin: 10px;
+
+        }
+
+}
