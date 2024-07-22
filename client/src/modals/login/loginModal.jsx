@@ -44,12 +44,12 @@ function loginModal(props) {
          const result = await registerUser(formData);
          if (result) {
            alert(result.data.message);
-           navigate("/home-page");
+           navigate("/");
          }
        } else {
          const result = await loginUser(formData);
          if (result) {
-           navigate("/home-page");
+           navigate("/");
          }
        }
     };

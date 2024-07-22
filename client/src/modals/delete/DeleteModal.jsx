@@ -21,7 +21,7 @@ function DeleteModal(props) {
         if (result) {
             close();
             alert("Post deleted successfully")
-            navigate("/home-page");
+            navigate("/");
         }
     }
 

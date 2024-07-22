@@ -42,7 +42,7 @@ function addStoryModal(props) {
     if (editable) {
       await updatePostById(id, inputFields);
       closeEdit();
-      navigate("/home-page")
+      navigate("/")
 
     } else {
       const res = await createPost(inputFields);
