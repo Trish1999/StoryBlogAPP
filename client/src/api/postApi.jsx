@@ -14,19 +14,10 @@ export const createPost = async (postPayload) => {
     }
 };
 
-export const getPostByCategory = async (category, userId) => {
+
+export const getPostById = async (id) => {
     try {
-        const reqUrl = `${backendUrl}/post/${category}`;
-        const response = await axios.get(reqUrl);
-        return response.data;
-    } catch (error) {
-        console.log(error);
-        alert("Something went wrong");
-    }
-};
-export const getPostByUser = async (userName, userId) => {
-    try {
-        const reqUrl = `${backendUrl}/post/${userName}/${userId}`;
+        const reqUrl = `${backendUrl}/story/${id}`;
         const response = await axios.get(reqUrl);
         return response.data;
     } catch (error) {
@@ -35,16 +26,16 @@ export const getPostByUser = async (userName, userId) => {
     }
 };
 
-export const updatePostByUser = async (userName, updatedFormData) => {
+export const deletePost = async (id) => {
     try {
-        const reqUrl = `${backendUrl}/update/${userName}`;
+        const reqUrl = `${backendUrl}/delete/${id}`;
         const token = JSON.parse(localStorage.getItem("token"));
         axios.defaults.headers.common["Authorization"] = token;
-        const response = await axios.put(reqUrl, updatedFormData);
+        const response = await axios.delete(reqUrl);
         return response.data;
     } catch (error) {
         console.log(error);
-        alert("Something went wrong");
+
     }
 };
 
@@ -56,5 +47,18 @@ export const getAllPosts = async () => {
     } catch (error) {
         console.log(error);
         alert("Something went wrong");
+    }
+};
+
+export const updatePostById = async (id, postPayload) => {
+    try {
+        const reqUrl = `${backendUrl}/update/${id}`;
+        const token = JSON.parse(localStorage.getItem("token"));
+        axios.defaults.headers.common["Authorization"] = token;
+        const response = await axios.put(reqUrl, postPayload);
+        return response.data;
+    } catch (error) {
+        console.log(error);
+
     }
 };

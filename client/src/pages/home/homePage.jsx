@@ -3,8 +3,9 @@ import { useParams, useNavigate } from "react-router-dom";
 import styles from "./homePage.module.css";
 
 import Header from '../../components/header/header';
-import Cardlist from '../../components/card/cardList';
 import { getAllPosts } from "../../api/postApi";
+import Card from "../../components/card/Card"
+
 
 function homePage() {
   
@@ -14,9 +15,10 @@ function homePage() {
   const [headerCategories] = useState([
     { category: 'food', url: 'https://cdn.britannica.com/36/123536-050-95CB0C6E/Variety-fruits-vegetables.jpg' },
     { category: 'health and fitness', url: 'https://st4.depositphotos.com/13324256/19676/i/600/depositphotos_196761434-stock-photo-close-view-dumbbell-bottle-water.jpg' },
-    { category: 'travel', url: 'https://springsource.in/assets/images/travel.jpg' },
-    { category: 'movie', url: 'https://hips.hearstapps.com/hmg-prod/images/movies-based-on-a-true-story-64e7c14b60826.jpg?crop=1.28xw:0.886xh;0,0.0341xh&resize=1200:*' },
+    { category: 'travel', url: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTguP1KGNecfYUNGupv6vAWXOF6_bdU5_R-3Ub5RaAIyNxvQg9eqZIdEC4Q&s=10' },
+    { category: 'movie', url: 'https://c4.wallpaperflare.com/wallpaper/883/883/818/movie-collage-wallpaper-preview.jpg' },
     { category: 'education', url: 'https://knowledge.wharton.upenn.edu/wp-content/uploads/2008/08/objective-of-education-is-learning-feature-1199x815.jpg' }]);
+
 
       useEffect(() => {
         getPostDetails();
@@ -33,26 +35,30 @@ function homePage() {
 
     const renderCategory = (category) => {
     return (
-      <div className={styles.storysection}>
+      <div className={styles.mainsection}>
+
+        < h2 > Top Stories About {category}</h2 >
+        <div className={styles.section}>
          {postDetails
             .filter((item) => item.category === category)
           .map((item, index) => (
-            <>
-              <h2>Top Stories About {category}</h2>
-              {item?
-            <Cardlist
-              key={index}
-                  stories={[item]} />
-                :<h2>No story Avilable</h2>}
-              </>))}
-          
+            <Card
+              index
+              story={[item]}
+              data={postDetails}
+
+            />
+          ))
+          }
+        </div>
         </div>
     );
   };
+
   const renderAllCategories = () => {
     return (
       <div>
-        {["food", "health and fitness", "travel","movies","education"].map((category, index) => (
+        {["food", "health and fitness", "travel", "movie", "education"].map((category, index) => (
           <div key={index}>{renderCategory(category)}</div>
         ))}
       </div>

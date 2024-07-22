@@ -65,7 +65,7 @@ function loginModal(props) {
         }}>
         <div className={styles.modalform}>
           <div className={styles.modalheader}>
-          {modalType} to Swip Tory
+            {modalType} to  story blog
           </div>
   
               <label >

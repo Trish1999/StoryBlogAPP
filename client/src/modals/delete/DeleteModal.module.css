@@ -1,0 +1,19 @@
+.container {
+    text-align: center;
+}
+
+.footerbtn {
+    border-radius: 4rem;
+    color: white;
+    border: none;
+    padding: 0.5rem;
+    width: 5rem;
+    cursor: pointer;
+    opacity: 0.7;
+    transition: 0.3s;
+    background: rgb(193, 23, 20);
+}
+
+.footerbtn:hover {
+    opacity: 1;
+}

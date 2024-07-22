@@ -3,7 +3,7 @@ import { useState } from 'react';
 import { Modal } from 'react-responsive-modal';
 import { useNavigate, useLocation } from 'react-router-dom';
 
-import { createPost, updatePostByUser } from "../../api/postApi";
+import { createPost, updatePostById } from "../../api/postApi";
 import styles from './addStoryModal.module.css'
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";import {faCircleXmark} from "@fortawesome/free-solid-svg-icons";
 import '../../modals/custom-styling.css';
@@ -12,22 +12,22 @@ const closeIcon=<FontAwesomeIcon icon={faCircleXmark} style={{color: "#d40222",f
 
 
 function addStoryModal(props) {
-  const { close, open } = props;
+  const { close, open, openEdit, closeEdit, id, imgurl, heading, descp, refUserId, category, editable } = props;
   const navigate = useNavigate();
-      const { state } = useLocation();
-    const [stateData] = useState(state?.PostDetails);
+
     const [inputFields, setInputFields] = useState({
-        heading: "" || stateData?.heading,
-        description: "" || stateData?.description,
-        imageUrl: "" || stateData?.imageUrl,
-        category: "" || stateData?.category
+      heading: "" || heading,
+      description: "" || descp,
+      imageUrl: "" || imgurl,
+      category: "" || category
     });
 
         const handleChange = (event) => {
         setInputFields({...inputFields,[event.target.name]: event.target.value });
   };
   
-  const handleSubmit = async () => {
+  const handleSubmit = async (e) => {
+    e.preventDefault();
         if (
             !inputFields.heading ||
             !inputFields.description ||
@@ -39,50 +39,30 @@ function addStoryModal(props) {
             return;
         }
 
-        // if (state?.edit) {
-        //     await updatePostByUser(stateData.userName, inputFields);
-        //     return;
-        // }
+    if (editable) {
+      await updatePostById(id, inputFields);
+      closeEdit();
+      navigate("/home-page")
 
-        await createPost(inputFields);
-    };
-  // const addFields = () => {
-  //   if (inputFields.length < 6) {
-  //     setInputFields([...inputFields, { heading: '', description: '', imageUrl: '', category: '' }])
-  //     setCurrentSlide(inputFields.length + 1);
-  //   }
-  // };
+    } else {
+      const res = await createPost(inputFields);
+      if (res) {
+        close();
 
-  //   const removeFields = (index) => {
-  //   let data = [...inputFields];
-  //   data.splice(index, 1)
-  // }
-
-  // const prevSlide = () => {
-  //   setCurrentSlide(currentSlide - 1);
-  // };
-
-  // const nextSlide = () => {
-  //   setCurrentSlide(currentSlide + 1);
-  // };
+      }
+    }
+  };
 
 
   return (
     <div>
-      <Modal open={open} onClose={close} center
+      <Modal open={editable ? openEdit : open}
+        onClose={editable ? closeEdit : close} center
               closeIcon={closeIcon}
               classNames={{
                   modal: 'customModal1',
               }}>
         <div className={styles.container}>
-          <p>Add apto 6 slides </p>
-          </div>
-          <div className={styles.modalslides}>
-                      <button className={styles.headerbtn} onclick="" >Slide 1</button>
-                      <button className={styles.headerbtn} onclick="" disabled>Slide 2</button>
-                      <button className={styles.headerbtn} onclick=""  disabled>Slide 3</button>
-          <button className={styles.headerbtn} onclick="" disabled>Add +</button>
-    </div>
                   <label >
                     Heading:
                   </label>
@@ -122,9 +102,8 @@ function addStoryModal(props) {
                   </select>
 
         <div className={styles.footer}>
-        <button className={styles.footerbtn1} onClick="" disabled>Previous</button>
-        <button className={styles.footerbtn2} onClick="" disabled>Next</button>
-          <button className={styles.footerbtn3} onClick={handleSubmit}>Post</button>
+            <button className={styles.footerbtn} onClick={handleSubmit}>Post</button>
+          </div>
           </div>
       </Modal>
     </div>
@@ -133,5 +112,5 @@ function addStoryModal(props) {
 
 
 
-export default addStoryModal
+export default addStoryModal;
 

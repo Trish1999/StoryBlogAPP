@@ -21,15 +21,23 @@
     display:flex;
     justify-content: space-evenly;
 }
-.storysection h2{
+.section {
+    display: flex;
+}
+
+.mainsection h2 {
     text-align: center;
 }
 
 @media (min-width: 300px) and (max-width: 780px) {
 .filter {
     display:flex;
-    justify-content:space-evenly;
-
+    flex-wrap: wrap;
+        justify-content: space-evenly;
+    }
+    
+    .mainsection {
+        align-items: center;
     }
         .filterbtn {
             font-size: 1rem;
@@ -37,7 +45,10 @@
             width: 5rem;
             height: 5rem;
             margin: 10px;
-
+            }
+            
+            .section {
+                display: block;
         }
 
 }

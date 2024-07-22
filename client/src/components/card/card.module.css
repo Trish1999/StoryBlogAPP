@@ -2,7 +2,6 @@
     border: none;
     box-shadow: lightgray;
     border-radius: 1rem;
-    display: flex;
     flex-direction: column;
     width: 15rem;
     height: 25rem;
@@ -10,25 +9,32 @@
     background-color: black;
     color: white;
     text-align: center;
-    margin:1.5rem
+overflow-wrap: break-word;
+    margin: 1.5rem;
+    padding-bottom: 1rem;
+}
+.cardcontainer img {
+    width: 15rem;
+    height: 18rem;
+    }
     
-}
-
-img {
-width: 15rem;
-    height:20rem;
-}
-
-
-.heading {
-    font-size: 1.4rem;
-}
-
-.cardlist {
+    .text {
+        line-height: 0.8rem;
+    }
+    
+    .add p .heading {
+        font-size: larger;
+            height: 3rem;
+        }
+.descp {
+    overflow: hidden;
+        height: 4rem;
+    }
+    
+    .cardlist {
     display: flex;
-    flex-wrap: wrap;
 }
-.btn{
+.btn {
     color:white;
     background-color: rgb(120, 182, 240);
     border: none;
@@ -44,3 +50,4 @@ width: 15rem;
 .btn:hover{
     opacity: 2;
 }
+@media (min-width: 300px) and (max-width: 780px) {}

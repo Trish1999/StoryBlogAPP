@@ -38,6 +38,7 @@
 @media (min-width: 300px) and (max-width: 780px) {
     .filter {
         display: flex;
+        flex-wrap: wrap;
         justify-content: space-evenly;
 
     }

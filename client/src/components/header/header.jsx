@@ -4,23 +4,21 @@ import { useNavigate } from 'react-router-dom';
 
 
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faBookmark } from "@fortawesome/free-solid-svg-icons";
 import { faEllipsisVertical } from "@fortawesome/free-solid-svg-icons";
 import dp from "../../assets/avatar.svg";
 import LoginModal from '../../modals/login/loginModal';
 import AddStoryModal from '../../modals/addStory/addStoryModal';
 
-const options=<FontAwesomeIcon icon={faEllipsisVertical} />
-const bookmark = <FontAwesomeIcon icon={faBookmark} />;
+const options = <FontAwesomeIcon icon={faEllipsisVertical} />
 
-function header(props){
+function header(props) {
   const [isDropdownOpen, setIsDropdownOpen] = useState(false);
   const [showLoginModal, setShowLoginModal] = useState(false);
-  const[showAddStoryModal, setShowAddStoryModal] = useState(false);
+  const [showAddStoryModal, setShowAddStoryModal] = useState(false);
   const [loginProps, setLoginProps] = useState(null);
-  const [username, setUsername] = useState("John");
   const { userType } = props;
   const navigate = useNavigate();
+  const userName = useState(localStorage.getItem("userName"));
 
   const handleToggleDropdown = () => {
     setIsDropdownOpen(!isDropdownOpen);
@@ -37,7 +35,7 @@ function header(props){
   return (
  <>
       <div className={styles.navbar}>
-        <div className={styles.p}>SwipTory</div>
+        <div className={styles.p}>StoryBlog</div>
 
         {userType === "unauthorised" ?
           (<div className={styles.btn}>
@@ -45,9 +43,6 @@ function header(props){
             <button className={styles.btn2} onClick={() => hendleLoginProps({ modalType: 'login' })}>Sign In</button>
           </div>) :
           (<div className={styles.btn}>
-            <button className={styles.btn3} onClick="">
-              <i>{bookmark}</i> Bookmarks
-            </button>
             <button className={styles.btn4} onClick={() => setShowAddStoryModal(!showAddStoryModal)}>
               Add story
             </button>
@@ -63,7 +58,7 @@ function header(props){
               <i onClick={handleToggleDropdown}>{options}</i>
               {isDropdownOpen && (
                 <div className={styles.option}>
-                  <h4 style={{ textAlign: "center" }}>{username}</h4>
+                  <h4 style={{ textAlign: "center" }}>{userName}</h4>
                   <button onClick={handleLogout} className={styles.btn5}>
                     Logout
                   </button>
@@ -101,17 +96,11 @@ function header(props){
                   style={{ display: "flex", justifyContent: "space-evenly" }}
                 >
                     <img className={styles.dp} src={dp} alt="dp" />
-                    {username}
-                </div>
-                <button className={styles.btn5} onClick="">
-                  Your story
-                </button>
+                        {userName}
+                      </div>
                 <button className={styles.btn5} onClick={() => setShowAddStoryModal(true)}>
                   Add story
-                </button>
-                <button className={styles.btn5} onClick="">
-                  <i>{bookmark}</i> Bookmarks
-                </button>
+                      </button>
 
                 <button onClick={handleLogout} className={styles.btn5}>
                   Logout
@@ -133,7 +122,8 @@ function header(props){
       {showAddStoryModal &&
         <AddStoryModal
           open={() => setShowAddStoryModal(true)}
-        close={() => setShowAddStoryModal(false)}/>
+        close={() => setShowAddStoryModal(false)}
+      />
       }
     </>
   );

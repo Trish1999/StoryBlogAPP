@@ -67,7 +67,12 @@ const registerUser=async (req, res) => {
             userId: userDetails._id,
         userName:userDetails.userName}, process.env.SECRET_KEY,{expiresIn:"24h"});
 
-        res.json({ message: "User logged in" ,token:token,userName:userDetails.userName});
+        res.json({
+          message: "User logged in",
+          token: token,
+          userName: userDetails.userName,
+          userId: userDetails._id,
+        });
     } catch (error) {
         console.log(error);
         res.status(500).json({ errorMessage: "Something went wrong!" });

@@ -24,10 +24,10 @@ export const loginUser = async ({ userName, password }) => {
         });
         if (response.data?.token) {
             localStorage.setItem("token", JSON.stringify(response.data?.token));
-            localStorage.setItem("userName", JSON.stringify(response.data?.userName));
+            localStorage.setItem("userName", (response.data?.userName));
             localStorage.setItem(
                 "userId",
-                JSON.stringify(response.data?.userId)
+                (response.data?.userId)
             );
         }
         return true;
