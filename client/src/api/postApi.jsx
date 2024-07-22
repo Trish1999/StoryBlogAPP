@@ -1,5 +1,5 @@
 import axios from "axios";
-const backendUrl = `http://localhost:3000/api/v1/post`;
+const backendUrl = `https://story-blog-appvercelapp-trish1999s-projects.vercel.app/api/v1/post`;
 
 export const createPost = async (postPayload) => {
     try {
