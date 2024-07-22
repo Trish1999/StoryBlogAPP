@@ -1,11 +1,11 @@
 import React, { useState, useEffect } from 'react';
-import styles from '../card/Card.module.css'
 import get from 'lodash/get';
 import { useNavigate } from "react-router-dom";
 import { getPostById } from "../../api/postApi";
 import { NavLink } from 'react-router-dom';
 
 import CardPage from '../../pages/cardPage/CardPage';
+import styles from '../card/card.module.css';
 
 function Card(props) {
   const { story, data } = props;
