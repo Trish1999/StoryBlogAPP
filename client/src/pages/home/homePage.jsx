@@ -4,7 +4,7 @@ import styles from "./homePage.module.css";
 
 import Header from '../../components/header/header';
 import { getAllPosts } from "../../api/postApi";
-import Card from "../../components/card/Card"
+import Card from "../../components/card/card";
 
 
 function homePage() {
